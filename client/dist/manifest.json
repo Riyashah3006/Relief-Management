@@ -1,0 +1,24 @@
+{
+  "short_name": "VanguardOps",
+  "name": "Vanguard Ops: Disaster Relief System",
+  "description": "Rapid Humanitarian Relief Coordination & Emergency SOS Tracking",
+  "start_url": "/",
+  "background_color": "#0f172a",
+  "theme_color": "#ef4444",
+  "display": "standalone",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ]
+}

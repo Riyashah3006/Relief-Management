@@ -1,0 +1,27 @@
+{
+  "name": "relief-management",
+  "version": "1.0.0",
+  "description": "Vanguard Ops Disaster Relief Management Platform (TY SEM 1)",
+  "scripts": {
+    "start": "node server/index.js",
+    "seed": "node server/config/seed.js",
+    "build:client": "cd client && npm run build",
+    "server": "cd server && npm run dev",
+    "client": "cd client && npm run dev",
+    "docker:build": "docker compose build",
+    "docker:up": "docker compose up -d",
+    "docker:down": "docker compose down",
+    "docker:logs": "docker compose logs -f"
+  },
+  "keywords": [
+    "disaster-relief",
+    "humanitarian",
+    "scrum",
+    "docker",
+    "express",
+    "react",
+    "gis"
+  ],
+  "author": "Riya Shah",
+  "license": "ISC"
+}

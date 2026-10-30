@@ -1,0 +1,393 @@
+﻿Summary,Issue key,Issue id,Issue Type,Status,Project key,Project name,Project type,Project lead,Project lead id,Project description,Priority,Resolution,Assignee,Assignee Id,Reporter,Reporter Id,Creator,Creator Id,Created,Updated,Last Viewed,Resolved,Due date,Votes,Labels,Labels,Description,Environment,Watchers,Watchers Id,Original estimate,Remaining Estimate,Time Spent,Work Ratio,Σ Original Estimate,Σ Remaining Estimate,Σ Time Spent,Security Level,Attachment,Custom field (Development),Custom field (Issue color),Custom field (Rank),Sprint,Sprint,Custom field (Start date),Custom field (Story point estimate),Custom field (Team),Custom field (Vulnerability),Parent,Parent key,Parent summary,Status category,Status category changed
+Approve or Reject Relief Request,SCRUM-42,10105,Story,Done,SCRUM,Relief_Management,software,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,,Highest,Done,,,AARYA SHENDAWARE,712020:c0331558-ef10-49ce-9ce2-b3a8b642a726,AARYA SHENDAWARE,712020:c0331558-ef10-49ce-9ce2-b3a8b642a726,08/Aug/26 11:01 AM,24/Oct/26 11:23 AM,,24/Oct/26 11:23 AM,,0,relief-management,sprint-1,"*User Story*
+As a relief coordinator, I want to approve or reject a reviewed relief request with comments, so that approved requests can proceed to resource allocation.
+
+*Acceptance Criteria*
+
+# Given a coordinator reviews a request with status ""Under Review"", When they click ""Approve"" and add optional comments, Then the request status changes to ""Approved"" and the citizen is notified.
+# Given a coordinator clicks ""Reject"", When they provide a mandatory rejection reason, Then the request status changes to ""Rejected"" and the citizen is notified with the reason.
+# Given a request is approved, When the status updates, Then the request appears in the ""Resource Allocation"" queue for the coordinator.",,AARYA SHENDAWARE,712020:c0331558-ef10-49ce-9ce2-b3a8b642a726,,,,,,,,,,{},,0|i00093:,,,,3.0,,,10087,SCRUM-24,Relief Request Management,Done,24/Oct/26 11:23 AM
+Review and Prioritize Relief Requests,SCRUM-41,10104,Story,Done,SCRUM,Relief_Management,software,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,,Highest,Done,,,AARYA SHENDAWARE,712020:c0331558-ef10-49ce-9ce2-b3a8b642a726,AARYA SHENDAWARE,712020:c0331558-ef10-49ce-9ce2-b3a8b642a726,08/Aug/26 11:01 AM,24/Oct/26 11:23 AM,,24/Oct/26 11:23 AM,,0,relief-management,sprint-1,"*User Story*
+As a relief coordinator, I want to review incoming relief requests and assign priority levels, so that the most urgent needs are addressed first.
+
+*Acceptance Criteria*
+
+# Given a coordinator views the request queue, When the page loads, Then all ""Submitted"" requests are listed with citizen details, location, number affected, and urgency.
+# Given a coordinator selects a request, When they assign a priority (Critical, High, Medium, Low), Then the request status changes to ""Under Review"" and the priority is saved.
+# Given multiple requests exist, When the coordinator views the queue, Then requests are sorted by urgency and submission time by default.",,AARYA SHENDAWARE,712020:c0331558-ef10-49ce-9ce2-b3a8b642a726,,,,,,,,,,{},,0|i0008v:,,,,5.0,,,10087,SCRUM-24,Relief Request Management,Done,24/Oct/26 11:23 AM
+View My Relief Requests,SCRUM-40,10103,Story,Done,SCRUM,Relief_Management,software,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,,High,Done,,,AARYA SHENDAWARE,712020:c0331558-ef10-49ce-9ce2-b3a8b642a726,AARYA SHENDAWARE,712020:c0331558-ef10-49ce-9ce2-b3a8b642a726,08/Aug/26 11:01 AM,24/Oct/26 11:23 AM,,24/Oct/26 11:23 AM,,0,relief-management,sprint-1,"*User Story*
+As an affected citizen, I want to view all my submitted relief requests and their current status, so that I can track the progress of my assistance.
+
+*Acceptance Criteria*
+
+# Given a logged-in citizen navigates to ""My Requests"", When the page loads, Then it displays all their requests with request ID, type, status, and submission date.
+# Given the citizen has multiple requests, When they view the list, Then they can filter by status (Submitted, Under Review, Approved, Rejected, Completed).
+# Given the citizen clicks on a specific request, When the detail page opens, Then it shows full details including assigned resources and timeline.",,AARYA SHENDAWARE,712020:c0331558-ef10-49ce-9ce2-b3a8b642a726,,,,,,,,,,{},,0|i0008n:,,,,3.0,,,10087,SCRUM-24,Relief Request Management,Done,24/Oct/26 11:23 AM
+Submit Relief Request,SCRUM-39,10102,Story,Done,SCRUM,Relief_Management,software,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,,Highest,Done,,,AARYA SHENDAWARE,712020:c0331558-ef10-49ce-9ce2-b3a8b642a726,AARYA SHENDAWARE,712020:c0331558-ef10-49ce-9ce2-b3a8b642a726,08/Aug/26 11:01 AM,24/Oct/26 11:23 AM,,24/Oct/26 11:23 AM,,0,relief-management,sprint-1,"*User Story*
+As an affected citizen, I want to submit a relief request specifying my needs, location, and number of affected people, so that relief coordinators can assess and provide assistance.
+
+*Acceptance Criteria*
+
+# Given a logged-in citizen selects an active disaster, When they fill in request type (food, shelter, medical, clothing), location, number of people affected, and urgency level, and submit, Then the system creates a relief request with status ""Submitted"" and a unique request ID.
+# Given the citizen submits a request, When it is saved, Then the system sends a confirmation notification with the request ID.
+# Given mandatory fields are missing, When the citizen tries to submit, Then the system prevents submission and highlights missing fields.",,AARYA SHENDAWARE,712020:c0331558-ef10-49ce-9ce2-b3a8b642a726,,,,,,,,,,{},,0|i0008f:,,,,5.0,,,10087,SCRUM-24,Relief Request Management,Done,24/Oct/26 11:23 AM
+View Active Disasters,SCRUM-38,10101,Story,Done,SCRUM,Relief_Management,software,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,,High,Done,,,AARYA SHENDAWARE,712020:c0331558-ef10-49ce-9ce2-b3a8b642a726,AARYA SHENDAWARE,712020:c0331558-ef10-49ce-9ce2-b3a8b642a726,08/Aug/26 11:01 AM,24/Oct/26 11:23 AM,,24/Oct/26 11:23 AM,,0,relief-management,sprint-1,"*User Story*
+As a user, I want to view a list of all active disaster incidents with their details, so that I can understand the current relief situation and take appropriate action.
+
+*Acceptance Criteria*
+
+# Given any authenticated user accesses the disasters page, When the page loads, Then it displays a list of active incidents with type, severity, location, and date.
+# Given there are multiple active incidents, When the user views the list, Then they can filter by disaster type and severity.
+# Given the user clicks on an incident, When the detail page loads, Then it shows full incident information including affected area and number of requests.",,AARYA SHENDAWARE,712020:c0331558-ef10-49ce-9ce2-b3a8b642a726,,,,,,,,,,{},,0|i00087:,,,,3.0,,,10086,SCRUM-23,Disaster / Incident Management,Done,24/Oct/26 11:23 AM
+Create Disaster Incident,SCRUM-37,10100,Story,Done,SCRUM,Relief_Management,software,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,,Highest,Done,,,AARYA SHENDAWARE,712020:c0331558-ef10-49ce-9ce2-b3a8b642a726,AARYA SHENDAWARE,712020:c0331558-ef10-49ce-9ce2-b3a8b642a726,08/Aug/26 11:01 AM,24/Oct/26 11:23 AM,,24/Oct/26 11:23 AM,,0,relief-management,sprint-1,"*User Story*
+As an authority, I want to create a new disaster incident by providing disaster type, severity, affected area, and description, so that the system can begin coordinating relief operations.
+
+*Acceptance Criteria*
+
+# Given an authority user fills in disaster type, severity level, location, radius, and description, When they submit, Then the system creates a new incident with status ""Active"" and generates a unique incident ID.
+# Given mandatory fields are missing, When the form is submitted, Then the system shows validation errors.
+# Given a new incident is created, When it is saved, Then the system triggers a notification to all Relief Coordinators.",,AARYA SHENDAWARE,712020:c0331558-ef10-49ce-9ce2-b3a8b642a726,,,,,,,,,,{},,0|i0007z:,,,,5.0,,,10086,SCRUM-23,Disaster / Incident Management,Done,24/Oct/26 11:23 AM
+Role-Based Access Control,SCRUM-36,10099,Story,Done,SCRUM,Relief_Management,software,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,,Highest,Done,,,AARYA SHENDAWARE,712020:c0331558-ef10-49ce-9ce2-b3a8b642a726,AARYA SHENDAWARE,712020:c0331558-ef10-49ce-9ce2-b3a8b642a726,08/Aug/26 11:01 AM,24/Oct/26 11:23 AM,,24/Oct/26 11:23 AM,,0,relief-management,sprint-1,"*User Story*
+As a system administrator, I want the system to enforce role-based access control, so that users can only access features and data appropriate to their role (Citizen, Coordinator, Volunteer, Donor, Authority, Admin).
+
+*Acceptance Criteria*
+
+# Given a user logs in with a specific role, When they navigate the system, Then they can only see menus and pages permitted for their role.
+# Given a Citizen tries to access the Admin panel URL directly, When the request is processed, Then the system returns a 403 Forbidden response.
+# Given a new user registers, When their account is created, Then they are assigned the default ""Citizen"" role.",,AARYA SHENDAWARE,712020:c0331558-ef10-49ce-9ce2-b3a8b642a726,,,,,,,,,,{},,0|i0007r:,,,,5.0,,,10085,SCRUM-22,User & Authentication Management,Done,24/Oct/26 11:23 AM
+Password Reset,SCRUM-35,10098,Story,Done,SCRUM,Relief_Management,software,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,,High,Done,,,AARYA SHENDAWARE,712020:c0331558-ef10-49ce-9ce2-b3a8b642a726,AARYA SHENDAWARE,712020:c0331558-ef10-49ce-9ce2-b3a8b642a726,08/Aug/26 11:01 AM,24/Oct/26 11:23 AM,,24/Oct/26 11:23 AM,,0,relief-management,sprint-1,"*User Story*
+As a registered user, I want to reset my password via email, so that I can regain access to my account if I forget my credentials.
+
+*Acceptance Criteria*
+
+# Given the user clicks ""Forgot Password"", When they enter their registered email, Then the system sends a password reset link valid for 30 minutes.
+# Given the user clicks the reset link, When they enter a new password meeting complexity requirements, Then the password is updated and user is redirected to login.
+# Given the reset link has expired, When the user clicks it, Then the system shows ""Link expired, request a new one"" message.",,AARYA SHENDAWARE,712020:c0331558-ef10-49ce-9ce2-b3a8b642a726,,,,,,,,,,{},,0|i0007j:,,,,2.0,,,10085,SCRUM-22,User & Authentication Management,Done,24/Oct/26 11:23 AM
+User Login,SCRUM-34,10097,Story,Done,SCRUM,Relief_Management,software,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,,Highest,Done,,,AARYA SHENDAWARE,712020:c0331558-ef10-49ce-9ce2-b3a8b642a726,AARYA SHENDAWARE,712020:c0331558-ef10-49ce-9ce2-b3a8b642a726,08/Aug/26 11:00 AM,24/Oct/26 11:23 AM,,24/Oct/26 11:23 AM,,0,relief-management,sprint-1,"*User Story*
+As a registered user, I want to log into the system using my credentials, so that I can access my dashboard and perform role-specific actions.
+
+*Acceptance Criteria*
+
+# Given a registered user enters valid email and password, When they click Login, Then the system authenticates them and redirects to their role-based dashboard.
+# Given a user enters invalid credentials, When they click Login, Then the system displays ""Invalid email or password"" error.
+# Given a user fails login 5 times, When the 6th attempt is made, Then the account is temporarily locked for 15 minutes.",,AARYA SHENDAWARE,712020:c0331558-ef10-49ce-9ce2-b3a8b642a726,,,,,,,,,,{},,0|i0007b:,,,,2.0,,,10085,SCRUM-22,User & Authentication Management,Done,24/Oct/26 11:23 AM
+Citizen Registration,SCRUM-33,10096,Story,Done,SCRUM,Relief_Management,software,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,,Highest,Done,,,AARYA SHENDAWARE,712020:c0331558-ef10-49ce-9ce2-b3a8b642a726,AARYA SHENDAWARE,712020:c0331558-ef10-49ce-9ce2-b3a8b642a726,08/Aug/26 11:00 AM,24/Oct/26 11:23 AM,,24/Oct/26 11:23 AM,,0,relief-management,sprint-1,"*User Story*
+As an affected citizen, I want to register on the Relief Management System by providing my personal details, so that I can access the platform and submit relief requests.
+
+*Acceptance Criteria*
+
+# Given a new user visits the registration page, When they fill in name, email, phone, password, and location, Then the system creates an account and sends a verification email.
+# Given the user submits the form with missing mandatory fields, When validation runs, Then the system displays appropriate error messages.
+# Given the user already has an account with the same email, When they try to register, Then the system shows ""Email already registered"" error.",,AARYA SHENDAWARE,712020:c0331558-ef10-49ce-9ce2-b3a8b642a726,,,,,,,,,,{},,0|i00073:,,,,3.0,,,10085,SCRUM-22,User & Authentication Management,Done,24/Oct/26 11:23 AM
+Administration & Security,SCRUM-32,10095,Epic,Done,SCRUM,Relief_Management,software,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,,Medium,Done,,,AARYA SHENDAWARE,712020:c0331558-ef10-49ce-9ce2-b3a8b642a726,AARYA SHENDAWARE,712020:c0331558-ef10-49ce-9ce2-b3a8b642a726,08/Aug/26 10:49 AM,24/Oct/26 11:23 AM,,24/Oct/26 11:23 AM,,0,epic,relief-management,"Covers system administration including user management, role/permission management, system configuration, and audit logs.",,AARYA SHENDAWARE,712020:c0331558-ef10-49ce-9ce2-b3a8b642a726,,,,,,,,,,{},dark_blue,0|i0006v:,,,,,,,,,,Done,24/Oct/26 11:23 AM
+Reports & Analytics,SCRUM-31,10094,Epic,Done,SCRUM,Relief_Management,software,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,,Medium,Done,,,AARYA SHENDAWARE,712020:c0331558-ef10-49ce-9ce2-b3a8b642a726,AARYA SHENDAWARE,712020:c0331558-ef10-49ce-9ce2-b3a8b642a726,08/Aug/26 10:49 AM,24/Oct/26 11:23 AM,,24/Oct/26 11:23 AM,,0,epic,relief-management,"Covers generation of operational reports, dashboards, and analytics for authorities and coordinators.",,AARYA SHENDAWARE,712020:c0331558-ef10-49ce-9ce2-b3a8b642a726,,,,,,,,,,{},dark_blue,0|i0006n:,,,,,,,,,,Done,24/Oct/26 11:23 AM
+Tracking & Monitoring,SCRUM-30,10093,Epic,Done,SCRUM,Relief_Management,software,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,,Medium,Done,,,AARYA SHENDAWARE,712020:c0331558-ef10-49ce-9ce2-b3a8b642a726,AARYA SHENDAWARE,712020:c0331558-ef10-49ce-9ce2-b3a8b642a726,08/Aug/26 10:49 AM,24/Oct/26 11:23 AM,,24/Oct/26 11:23 AM,,0,epic,relief-management,"Covers real-time tracking of relief requests, resource distribution, volunteer tasks, and overall relief operations.",,AARYA SHENDAWARE,712020:c0331558-ef10-49ce-9ce2-b3a8b642a726,,,,,,,,,,{},dark_blue,0|i0006f:,,,,,,,,,,Done,24/Oct/26 11:23 AM
+Notification & Alert Management,SCRUM-29,10092,Epic,Done,SCRUM,Relief_Management,software,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,,Medium,Done,,,AARYA SHENDAWARE,712020:c0331558-ef10-49ce-9ce2-b3a8b642a726,AARYA SHENDAWARE,712020:c0331558-ef10-49ce-9ce2-b3a8b642a726,08/Aug/26 10:49 AM,24/Oct/26 11:23 AM,,24/Oct/26 11:23 AM,,0,epic,relief-management,"Covers system-generated notifications and alerts to all actors for key events such as request updates, task assignments, and disaster alerts.",,AARYA SHENDAWARE,712020:c0331558-ef10-49ce-9ce2-b3a8b642a726,,,,,,,,,,{},dark_blue,0|i00067:,,,,,,,,,,Done,24/Oct/26 11:23 AM
+Donation Management,SCRUM-28,10091,Epic,Done,SCRUM,Relief_Management,software,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,,Medium,Done,,,AARYA SHENDAWARE,712020:c0331558-ef10-49ce-9ce2-b3a8b642a726,AARYA SHENDAWARE,712020:c0331558-ef10-49ce-9ce2-b3a8b642a726,08/Aug/26 10:49 AM,24/Oct/26 11:23 AM,,24/Oct/26 11:23 AM,,0,epic,relief-management,"Covers donor registration, campaign viewing, monetary and resource donations, and donation history.",,AARYA SHENDAWARE,712020:c0331558-ef10-49ce-9ce2-b3a8b642a726,,,,,,,,,,{},dark_blue,0|i0005z:,,,,,,,,,,Done,24/Oct/26 11:23 AM
+Volunteer Management,SCRUM-27,10090,Epic,Done,SCRUM,Relief_Management,software,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,,Medium,Done,,,AARYA SHENDAWARE,712020:c0331558-ef10-49ce-9ce2-b3a8b642a726,AARYA SHENDAWARE,712020:c0331558-ef10-49ce-9ce2-b3a8b642a726,08/Aug/26 10:49 AM,24/Oct/26 11:23 AM,,24/Oct/26 11:23 AM,,0,epic,relief-management,"Covers volunteer registration, skill profiling, task assignment, and task completion reporting.",,AARYA SHENDAWARE,712020:c0331558-ef10-49ce-9ce2-b3a8b642a726,,,,,,,,,,{},dark_blue,0|i0005r:,,,,,,,,,,Done,24/Oct/26 11:23 AM
+Relief Distribution Management,SCRUM-26,10089,Epic,Done,SCRUM,Relief_Management,software,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,,Medium,Done,,,AARYA SHENDAWARE,712020:c0331558-ef10-49ce-9ce2-b3a8b642a726,AARYA SHENDAWARE,712020:c0331558-ef10-49ce-9ce2-b3a8b642a726,08/Aug/26 10:49 AM,24/Oct/26 11:23 AM,,24/Oct/26 11:23 AM,,0,epic,relief-management,"Covers allocation and distribution of resources to affected citizens, including assignment and delivery tracking.",,AARYA SHENDAWARE,712020:c0331558-ef10-49ce-9ce2-b3a8b642a726,,,,,,,,,,{},dark_blue,0|i0005j:,,,,,,,,,,Done,24/Oct/26 11:23 AM
+Resource & Inventory Management,SCRUM-25,10088,Epic,Done,SCRUM,Relief_Management,software,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,,Medium,Done,,,AARYA SHENDAWARE,712020:c0331558-ef10-49ce-9ce2-b3a8b642a726,AARYA SHENDAWARE,712020:c0331558-ef10-49ce-9ce2-b3a8b642a726,08/Aug/26 10:49 AM,24/Oct/26 11:24 AM,,24/Oct/26 11:23 AM,15/Nov/26 12:00 AM,0,epic,relief-management,"Covers management of relief resources, inventory tracking, stock levels, and resource categorization.",,AARYA SHENDAWARE,712020:c0331558-ef10-49ce-9ce2-b3a8b642a726,,,,,,,,,,{},dark_blue,0|i0005b:,,,02/Nov/26 12:00 AM,,,,,,,Done,24/Oct/26 11:23 AM
+Relief Request Management,SCRUM-24,10087,Epic,Done,SCRUM,Relief_Management,software,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,,Medium,Done,,,AARYA SHENDAWARE,712020:c0331558-ef10-49ce-9ce2-b3a8b642a726,AARYA SHENDAWARE,712020:c0331558-ef10-49ce-9ce2-b3a8b642a726,08/Aug/26 10:49 AM,24/Oct/26 11:23 AM,,24/Oct/26 11:23 AM,,0,epic,relief-management,"Covers submission, review, prioritization, approval, and tracking of relief requests by affected citizens and coordinators.",,AARYA SHENDAWARE,712020:c0331558-ef10-49ce-9ce2-b3a8b642a726,,,,,,,,,,{},dark_blue,0|i00053:,,,,,,,,,,Done,24/Oct/26 11:23 AM
+Disaster / Incident Management,SCRUM-23,10086,Epic,Done,SCRUM,Relief_Management,software,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,,Medium,Done,,,AARYA SHENDAWARE,712020:c0331558-ef10-49ce-9ce2-b3a8b642a726,AARYA SHENDAWARE,712020:c0331558-ef10-49ce-9ce2-b3a8b642a726,08/Aug/26 10:49 AM,24/Oct/26 11:23 AM,,24/Oct/26 11:23 AM,,0,epic,relief-management,"Covers creation, management, and monitoring of disaster incidents and affected areas by authorities and coordinators.",,AARYA SHENDAWARE,712020:c0331558-ef10-49ce-9ce2-b3a8b642a726,,,,,,,,,,{},dark_blue,0|i0004v:,,,,,,,,,,Done,24/Oct/26 11:23 AM
+User & Authentication Management,SCRUM-22,10085,Epic,Done,SCRUM,Relief_Management,software,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,,Medium,Done,,,AARYA SHENDAWARE,712020:c0331558-ef10-49ce-9ce2-b3a8b642a726,AARYA SHENDAWARE,712020:c0331558-ef10-49ce-9ce2-b3a8b642a726,08/Aug/26 10:49 AM,24/Oct/26 11:23 AM,,24/Oct/26 11:23 AM,,0,epic,relief-management,"Covers all user registration, login, profile management, role-based access control, and session management for all actors in the Relief Management System.",,AARYA SHENDAWARE,712020:c0331558-ef10-49ce-9ce2-b3a8b642a726,,,,,,,,,,{},dark_blue,0|i0004n:,,,,,,,,,,Done,24/Oct/26 11:23 AM
+Final presentation,SCRUM-21,10052,Task,Done,SCRUM,Relief_Management,software,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,,Medium,Done,,,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,01/Aug/26 11:48 AM,24/Oct/26 11:23 AM,,24/Oct/26 11:23 AM,02/Sep/26 12:00 AM,0,,,"Milestone for Vanguard Ops disaster relief project timeline.
+
+Due: 2026-09-02.",,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,,,,,,,,,,{},,0|i0004f:,,,,,,,10041,SCRUM-10,Goal 5: Final Deployment,Done,24/Oct/26 11:23 AM
+Bug fixes,SCRUM-20,10051,Task,Done,SCRUM,Relief_Management,software,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,,Medium,Done,,,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,01/Aug/26 11:48 AM,24/Oct/26 11:23 AM,,24/Oct/26 11:23 AM,30/Aug/26 12:00 AM,0,,,"Milestone for Vanguard Ops disaster relief project timeline.
+
+Due: 2026-08-30.",,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,,,,,,,,,,{},,0|i00047:,,,,,,,10040,SCRUM-9,Goal 4: System Testing,Done,24/Oct/26 11:23 AM
+Testing,SCRUM-19,10050,Task,Done,SCRUM,Relief_Management,software,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,,Medium,Done,,,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,01/Aug/26 11:48 AM,24/Oct/26 11:23 AM,,24/Oct/26 11:23 AM,28/Aug/26 12:00 AM,0,,,"Milestone for Vanguard Ops disaster relief project timeline.
+
+Due: 2026-08-28.",,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,,,,,,,,,,{},,0|i0003z:,,,,,,,10040,SCRUM-9,Goal 4: System Testing,Done,24/Oct/26 11:23 AM
+Shelter & Resource module,SCRUM-18,10049,Task,Done,SCRUM,Relief_Management,software,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,,Medium,Done,,,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,01/Aug/26 11:48 AM,24/Oct/26 11:23 AM,,24/Oct/26 11:23 AM,25/Aug/26 12:00 AM,0,,,"Milestone for Vanguard Ops disaster relief project timeline.
+
+Due: 2026-08-25.",,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,,,,,,,,,,{},,0|i0003r:,,,,,,,10040,SCRUM-9,Goal 4: System Testing,Done,24/Oct/26 11:23 AM
+SOS module,SCRUM-17,10048,Task,Done,SCRUM,Relief_Management,software,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,,Medium,Done,,,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,01/Aug/26 11:48 AM,24/Oct/26 11:23 AM,,24/Oct/26 11:23 AM,23/Aug/26 12:00 AM,0,,,"Milestone for Vanguard Ops disaster relief project timeline.
+
+Due: 2026-08-23.",,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,,,,,,,,,,{},,0|i0003j:,,,,,,,10040,SCRUM-9,Goal 4: System Testing,Done,24/Oct/26 11:23 AM
+Database completed,SCRUM-16,10047,Task,Done,SCRUM,Relief_Management,software,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,,Medium,Done,,,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,01/Aug/26 11:48 AM,24/Oct/26 11:23 AM,,24/Oct/26 11:23 AM,15/Aug/26 12:00 AM,0,,,"Milestone for Vanguard Ops disaster relief project timeline.
+
+Due: 2026-08-15.",,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,,,,,,,,,,{},,0|i0003b:,,,,,,,10039,SCRUM-8,Goal 3: Database Integration,Done,24/Oct/26 11:23 AM
+Authentication,SCRUM-15,10046,Task,Done,SCRUM,Relief_Management,software,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,,Medium,Done,,,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,01/Aug/26 11:48 AM,24/Oct/26 11:23 AM,,24/Oct/26 11:23 AM,20/Aug/26 12:00 AM,0,,,"Milestone for Vanguard Ops disaster relief project timeline.
+
+Due: 2026-08-20.",,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,,,,,,,,,,{},,0|i00033:,,,,,,,10038,SCRUM-7,Goal 2: Backend APIs,Done,24/Oct/26 11:23 AM
+GIS & Maps integration,SCRUM-14,10045,Task,Done,SCRUM,Relief_Management,software,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,,Medium,Done,,,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,01/Aug/26 11:48 AM,24/Oct/26 11:23 AM,,24/Oct/26 11:23 AM,18/Aug/26 12:00 AM,0,,,"Milestone for Vanguard Ops disaster relief project timeline.
+
+Due: 2026-08-18.",,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,,,,,,,,,,{},,0|i0002v:,,,,,,,10038,SCRUM-7,Goal 2: Backend APIs,Done,24/Oct/26 11:23 AM
+Backend APIs,SCRUM-13,10044,Task,Done,SCRUM,Relief_Management,software,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,,Medium,Done,,,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,01/Aug/26 11:48 AM,24/Oct/26 11:23 AM,,24/Oct/26 11:23 AM,12/Aug/26 12:00 AM,0,,,"Milestone for Vanguard Ops disaster relief project timeline.
+
+Due: 2026-08-12.",,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,,,,,,,,,,{},,0|i0002n:,,,,,,,10038,SCRUM-7,Goal 2: Backend APIs,Done,24/Oct/26 11:23 AM
+UI/UX completed,SCRUM-12,10043,Task,Done,SCRUM,Relief_Management,software,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,,Medium,Done,,,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,01/Aug/26 11:48 AM,24/Oct/26 11:23 AM,,24/Oct/26 11:23 AM,07/Aug/26 12:00 AM,0,,,"Milestone for Vanguard Ops disaster relief project timeline.
+
+Due: 2026-08-07.",,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,,,,,,,,,,{},,0|i0002f:,,,,,,,10037,SCRUM-6,Goal 1: Complete UI Design,Done,24/Oct/26 11:23 AM
+Requirements finalized,SCRUM-11,10042,Task,Done,SCRUM,Relief_Management,software,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,,Medium,Done,,,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,01/Aug/26 11:48 AM,24/Oct/26 11:23 AM,,24/Oct/26 11:23 AM,03/Aug/26 12:00 AM,0,,,"Milestone for Vanguard Ops disaster relief project timeline.
+
+Due: 2026-08-03.",,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,,,,,,,,,,{},,0|i00027:,,,,,,,10037,SCRUM-6,Goal 1: Complete UI Design,Done,24/Oct/26 11:23 AM
+Goal 5: Final Deployment,SCRUM-10,10041,Epic,Done,SCRUM,Relief_Management,software,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,,Medium,Done,,,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,01/Aug/26 11:48 AM,24/Oct/26 11:23 AM,,24/Oct/26 11:23 AM,03/Sep/26 12:00 AM,0,,,"Vanguard Ops disaster relief project timeline epic.
+
+Target completion: 2026-09-03.",,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,,,,,,,,,,{},,0|i0001z:,,,,,,,,,,Done,24/Oct/26 11:23 AM
+Goal 4: System Testing,SCRUM-9,10040,Epic,Done,SCRUM,Relief_Management,software,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,,Medium,Done,,,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,01/Aug/26 11:48 AM,24/Oct/26 11:23 AM,,24/Oct/26 11:23 AM,28/Aug/26 12:00 AM,0,,,"Vanguard Ops disaster relief project timeline epic.
+
+Target completion: 2026-08-28.",,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,,,,,,,,,,{},,0|i0001r:,,,,,,,,,,Done,24/Oct/26 11:23 AM
+Goal 3: Database Integration,SCRUM-8,10039,Epic,Done,SCRUM,Relief_Management,software,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,,Medium,Done,,,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,01/Aug/26 11:48 AM,24/Oct/26 11:23 AM,07/Sep/26 1:37 PM,24/Oct/26 11:23 AM,20/Aug/26 12:00 AM,0,,,"Vanguard Ops disaster relief project timeline epic.
+
+Target completion: 2026-08-20.",,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,,,,,,,,,,{},,0|i0001j:,,,,,,,,,,Done,24/Oct/26 11:23 AM
+Goal 2: Backend APIs,SCRUM-7,10038,Epic,Done,SCRUM,Relief_Management,software,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,,Medium,Done,,,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,01/Aug/26 11:48 AM,24/Oct/26 11:23 AM,,24/Oct/26 11:23 AM,15/Aug/26 12:00 AM,0,,,"Vanguard Ops disaster relief project timeline epic.
+
+Target completion: 2026-08-15.",,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,,,,,,,,,,{},,0|i0001b:,,,,,,,,,,Done,24/Oct/26 11:23 AM
+Goal 1: Complete UI Design,SCRUM-6,10037,Epic,Done,SCRUM,Relief_Management,software,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,,Medium,Done,,,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,01/Aug/26 11:48 AM,24/Oct/26 11:23 AM,,24/Oct/26 11:23 AM,08/Aug/26 12:00 AM,0,,,"Vanguard Ops disaster relief project timeline epic.
+
+Target completion: 2026-08-08.",,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,,,,,,,,,,{},,0|i00013:,,,,,,,,,,Done,24/Oct/26 11:23 AM
+Implement this work item from your IDE or terminal,SCRUM-5,10004,Subtask,Done,SCRUM,Relief_Management,software,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,,,Done,,,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,25/Jul/26 10:15 AM,24/Oct/26 11:23 AM,,24/Oct/26 11:23 AM,09/Aug/26 12:00 AM,0,,,"*Ask a coding agent to add a short ""Hello, world!"" section to the README of any repo you have access to.*
+
+*Instructions for coding agent*
+
+# Add a short section to the repository README titled AI Agent Test
+# Include a brief sentence confirming this change was created from a Jira work item
+# Commit the change, open a draft pull request, and post status updates back to Jira
+# Do not modify production code or configuration files
+
+{panel:bgColor=#deebff}
+Try this after you've connected Atlassian Rovo MCP Server to your IDE or set up the Teamwork Graph CLI in your terminal.
+{panel}
+
+_This is a sample task to walk you through opening a Jira work item in your local dev tools and letting your agent implement it end to end._
+
+----
+
+*If you’re using Atlassian Rovo MCP:*
+
+# In the *Development* panel on this work item, select your IDE from the dropdown.
+# Follow the prompt to open this work item in your editor.
+# Ask your agent: _Implement this Jira work item_. The agent will read the description and make the change.
+# Review the diff, commit, and open a pull request from your editor.
+# Head back to this work item. Your linked pull request will appear in the agent panel.
+
+*If you’re using Teamwork Graph CLI:*
+
+# In your terminal, ask your agent: _Implement this Jira work item_ – include the work item URL or ID as context.
+# The agent will read the description and make the change.
+# Review the diff and merge or close the PR.
+# Head back to this work item. Your linked pull request will appear in the agent panel.",,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,,,,,,,,,,{},,0|i0000v:,SCRUM Sprint 1,SCRUM Sprint 0,,,,,10002,SCRUM-3,Connect Atlassian Rovo MCP to your local coding tools,Done,24/Oct/26 11:23 AM
+Delegate this work item to a coding agent,SCRUM-4,10003,Subtask,Done,SCRUM,Relief_Management,software,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,,,Done,,,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,25/Jul/26 10:15 AM,24/Oct/26 11:23 AM,,24/Oct/26 11:23 AM,04/Aug/26 12:00 AM,0,,,"*Ask a coding agent to add a short ""Hello, world!"" section to the README of any repo you have access to.*
+
+*Instructions for coding agent*
+
+# Add a short section to the repository README titled AI Agent Test.
+# Include a brief sentence confirming this change was created as part of a Jira → Coding Agent delegation test.
+# Create a branch, commit the change and open a draft pull request.
+# Leave a comment on the Jira task with a link to the draft PR.
+# Do not modify production code or configuration files.
+
+{panel:bgColor=#deebff}
+Try this after you've connected a coding agent to Jira.
+{panel}
+
+_This is a sample task to help you try the agentic development workflow. Once done, you'll have seen how Jira hands work off to a coding agent and gets a pull request back._
+
+----
+
+*Collaborating with agents:*
+
+There are [many ways|https://support.atlassian.com/jira-software-cloud/docs/collaborate-on-work-items-with-ai-agents/] to collaborate with agents in Jira. You can delegate this work item to a coding agent in one of two ways:
+
+*Option 1: Manually*
+
+Open the *Agent* field on this work item and select your coding agent.
+[https://www.loom.com/share/ded8d8c3ed724ff38d7726c589443076|https://www.loom.com/share/ded8d8c3ed724ff38d7726c589443076|smart-embed]
+
+*Option 2: Automatically*
+
+Select the agent icon at the top of a column to add the agent to your board. Then, move this card to that column on your board to delegate it to your coding agent automatically.
+[https://www.loom.com/share/ebe7dde8e7ae4b4583ba9b18af317ffd|https://www.loom.com/share/ebe7dde8e7ae4b4583ba9b18af317ffd|smart-embed]
+
+----
+
+*Instructions:*
+
+Once this work item’s been delegated to your agent:
+
+# In the agent panel, select the repo you want the agent to work in.
+# Monitor the agent panel for status updates and comments.
+# When the draft PR is created, review the changes in GitHub.
+# Merge or close the PR after verification.",,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,,,,,,,,,,{},,0|i0000n:,SCRUM Sprint 1,SCRUM Sprint 0,,,,,10001,SCRUM-2,Connect your coding agent to Jira,Done,24/Oct/26 11:23 AM
+Connect Atlassian Rovo MCP to your local coding tools,SCRUM-3,10002,Task,Done,SCRUM,Relief_Management,software,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,,,Done,,,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,25/Jul/26 10:15 AM,24/Oct/26 11:23 AM,,24/Oct/26 11:23 AM,09/Aug/26 12:00 AM,0,,,"Bring your Atlassian context into your IDE and terminal with [Teamwork Graph|https://teamworkgraph.com/]. Connect via Rovo MCP or the Teamwork Graph CLI and your agent can read, create, and action work without leaving your editor.
+
+*Teamwork Graph CLI and Rovo MCP are both official ways for AI agents to work with Atlassian data via the Teamwork Graph.*
+
+----
+
+*MCP: In your browser and desktop agents*
+
+[Atlassian Rovo MCP|https://support.atlassian.com/atlassian-rovo-mcp-server/docs/getting-started-with-the-atlassian-remote-mcp-server/] connects your AI agent to your Atlassian context – Jira, Confluence, Bitbucket, and connected work, all reachable in one conversation.
+
+*Select your tool below to see setup steps:*
+
+*GitHub Copilot*
+
+*Prerequisites:*
+* VS Code installed and updated.
+* GitHub Copilot enabled in VS Code.
+* Access to edit your VS Code MCP configuration.
+* An Atlassian account with access to the Jira content you want to use.
+*Configuration:*
+{code:json}{ ""servers"": { ""atlassian-mcp-server"": { ""url"": ""https://mcp.atlassian.com/v1/mcp/authv2"", ""type"": ""http"" } } }{code}
+*Steps:*
+# Open VS Code and confirm GitHub Copilot is enabled.
+# Open your VS Code MCP configuration file or MCP settings.
+# Add the Atlassian Rovo MCP server using the servers configuration format above.
+# Save the configuration file.
+# Reload the VS Code window or restart VS Code so the MCP configuration is picked up.
+# When prompted, complete the Atlassian authentication flow in your browser.
+# Return to VS Code and confirm the Atlassian Rovo MCP server is available to Copilot.
+*Important:* GitHub Copilot in VS Code uses a native HTTP MCP connection. Do not use the Claude Desktop mcpServers format or the mcp-remote proxy for this setup.
+
+*Cursor*
+
+*Prerequisites:*
+* A modern version of Cursor that supports MCP server configuration.
+* Access to Cursor settings.
+* An Atlassian account with access to the Jira content you want to use.
+*Configuration:*
+{code:json}""Atlassian-MCP-Server"": { ""url"": ""https://mcp.atlassian.com/v1/mcp/authv2"" }{code}
+*Steps:*
+# Open Cursor.
+# Go to Cursor settings and find the MCP or Model Context Protocol settings area.
+# Add a new MCP server entry.
+# Name the server something recognizable, such as Atlassian-MCP-Server.
+# Use the direct Atlassian Rovo MCP URL: https://mcp.atlassian.com/v1/mcp/authv2.
+# Save the MCP server configuration.
+# Restart Cursor or reload the window if the server does not appear immediately.
+# Complete the Atlassian authentication flow when prompted.
+# Return to Cursor and confirm the Atlassian Rovo MCP server is available.
+*Important:* Modern Cursor versions can connect directly by URL. If Cursor does not recognize the server, confirm your Cursor version supports native HTTP MCP connections before trying another setup style.
+
+*Codex*
+
+*Prerequisites:*
+* Node.js v18 or later installed.
+* npx available on your machine.
+* Access to edit the Codex MCP configuration file or MCP settings.
+* An Atlassian account with access to the Jira content you want to use.
+*Configuration:*
+{code:json}""Atlassian-Rovo-MCP"": { ""command"": ""npx"", ""args"": [""-y"", ""mcp-remote@latest"", ""https://mcp.atlassian.com/v1/mcp/authv2""] }{code}
+*Steps:*
+# Confirm Node.js v18+ and npx are installed.
+# Open the Codex MCP configuration file or settings area.
+# Add the Atlassian server using the command and args configuration above.
+# Save the configuration.
+# Restart Codex so it can launch the mcp-remote proxy.
+# When the browser authentication window opens, sign in with your Atlassian account and approve access.
+# Return to Codex and confirm the Atlassian Rovo MCP tools are available.
+*Important:* Codex uses the mcp-remote proxy rather than a direct native HTTP connection. If authentication or tool discovery fails, first confirm that Node.js and npx are installed and available from your terminal.
+
+*Claude*
+
+*Prerequisites:*
+* Claude Desktop installed.
+* Node.js v18 or later installed.
+* npx available on your machine.
+* Access to edit the Claude Desktop configuration file.
+* An Atlassian account with access to the Jira content you want to use.
+*Configuration:*
+{code:json}{ ""mcpServers"": { ""Atlassian"": { ""command"": ""npx"", ""args"": [""-y"", ""mcp-remote@latest"", ""https://mcp.atlassian.com/v1/mcp/authv2""] } } }{code}
+*Steps:*
+# Confirm Node.js v18+ and npx are installed.
+# Fully quit Claude Desktop before editing the configuration.
+# Open the Claude Desktop configuration file.
+# Find or create the mcpServers section.
+# Add the Atlassian server using the Claude Desktop mcpServers configuration above.
+# Save the configuration file.
+# Restart Claude Desktop.
+# Complete the Atlassian authentication flow when prompted.
+# Open Claude Desktop and confirm the Atlassian Rovo MCP server appears in the available tools or integrations.
+*Important:* Claude Desktop does not use the native HTTP servers block shown for GitHub Copilot. Use the mcpServers block with npx and mcp-remote.
+
+{panel:bgColor=#deebff}
+Need help? See the [+IDE setup guide+|https://support.atlassian.com/atlassian-rovo-mcp-server/docs/setting-up-ides/] and [+troubleshooting+|https://support.atlassian.com/atlassian-rovo-mcp-server/docs/troubleshooting-and-verifying-your-setup/].
+{panel}
+
+----
+
+*CLI: In your agent terminal*
+
+[Teamwork Graph CLI|https://developer.atlassian.com/cloud/twg-cli/] is a command line interface to the Atlassian Teamwork Graph and Cloud services.
+
+If you work in terminals, scripts, or CI/CD pipelines, the Teamwork Graph CLI gives you deeper, command-line control of your Atlassian data.
+
+*Install TWG CLI using your AI coding agent*
+
+Use this when you want an AI coding agent to install TWG CLI, authenticate, and set up agent skills for you.
+Copy the following prompt and paste it into your agent:
+{noformat}Install/setup TWG using https://teamwork-graph.atlassian.com/cli/AGENTS.md{noformat}
+The agent should use that hosted {{AGENTS.md}} directly. There are no separate agent-specific install URLs.
+Once installed, run:
+{noformat}twg doctor{noformat}
+This checks authentication, connectivity, and build info. It works the same on macOS, Linux, PowerShell, and cmd
+
+{panel:bgColor=#deebff}
+Want to install TWC CLI directly from your terminal? View the [full TWG CLI setup guide|https://developer.atlassian.com/cloud/twg-cli/getting-started/installation/].
+{panel}
+
+----
+
+*Try it out:*
+
+Your AI coding agent can now access your Atlassian data across Jira, Confluence, Bitbucket, and more.
+
+Describe what you want in plain language and your agent handles the rest:
+
+* _""Find all open bugs in [project name].""_
+* _""Create a task titled 'Redesign onboarding', high priority, assign to me.""_
+* _""Move PROJ-456 to 'In Review' and add a comment that the PR is up.""_
+* _""Make 5 Jira work items from these meeting notes…""_",,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,,,,,,,,,25/Jul/26 10:15 AM;10513a63-3f22-4601-abef-5b637bd70e15;connect-atlassian-mcp.png;https://riyashah30.atlassian.net/rest/api/3/attachment/content/10002,{},,0|i0000f:,SCRUM Sprint 1,SCRUM Sprint 0,,,,,,,,Done,24/Oct/26 11:23 AM
+Connect your coding agent to Jira,SCRUM-2,10001,Task,Done,SCRUM,Relief_Management,software,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,,,Done,,,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,25/Jul/26 10:15 AM,24/Oct/26 11:23 AM,,24/Oct/26 11:23 AM,04/Aug/26 12:00 AM,0,,,"Connect an agent to Jira to automate code changes, draft PRs, and progress work automatically.
+
+*Prerequisites*
+
+Before setting up a coding agent, ensure you have:
+* A Jira cloud instance with [Rovo|https://www.atlassian.com/software/rovo/guides/admin-guide/rovo-activation#confirm-activation] enabled.
+* Admin rights to install a coding app, or submit a request to your admin.
+* An active subscription for your chosen agent.
+* A code repository the agent can work in.
+
+*Select your tool below to see setup steps:*
+
+*GitHub Copilot*
+
+# Go to the [GitHub Copilot for Jira|/jira/marketplace/discover/app/com.github.copilot] app on the Atlassian Marketplace.
+# Select *Get it now*, choose your site, then review and install the app (or submit a request to your admin).
+# If you're not automatically redirected, open the [GitHub Copilot for Jira|https://github.com/apps/github-copilot-for-jira] page on the GitHub Marketplace, sign in if required, and click *Install*.
+# Back in Jira, go to *Project settings* → *Apps* → *Manage apps*.
+# Find *GitHub Copilot for Jira* and select *Configure*.
+# Enable the GitHub organization you want to grant access to.
+
+*Cursor*
+
+# In your [Cursor integration settings|https://www.cursor.com/dashboard/integrations], click *Connect* next to Jira.
+# Go to the [Cursor|/jira/marketplace/discover/app/com.anysphere.jira.plugins.cursor] app on the Atlassian Marketplace.
+# Select *Get it now*, choose your site, then review and install the app (or submit a request to your admin).
+# Go to *Project settings* → *Apps* → *Manage apps*.
+# Find *Cursor* and select *Configure*.
+# Select *Connect to Cursor*.
+# Connect your Jira site to your Cursor team.
+
+*Claude*
+
+The Claude for Jira coding agent requires two credentials:
+* *An Anthropic API key* for Claude Managed Agents
+* *A GitHub personal access token* for your GitHub service account
+Once you have these:
+# Go to the [+Claude for Jira+|/jira/marketplace/discover/app/com.atlassian.agent.claude.for.jira] app on the Atlassian Marketplace.
+# Click *Get it now*, select your site, then review and install the app (or submit a request to your admin).
+# Go to *Project settings* → *Apps* → *Manage apps*.
+# Find *Claude Agent for Jira* and select *Configure*.
+# In the *Claude Managed Agents API Key* field, paste your API key.
+# Once verified, click *Create Agent* and confirm the Claude agent appears in your Anthropic Console.
+# In the *GitHub Personal Access Token* field, paste and verify your access token.
+# Click *Save configuration*.",,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,,,,,,,,,25/Jul/26 10:15 AM;10513a63-3f22-4601-abef-5b637bd70e15;connect-agents-to-jira.png;https://riyashah30.atlassian.net/rest/api/3/attachment/content/10001,{},,0|i00007:,SCRUM Sprint 1,SCRUM Sprint 0,,,,,,,,Done,24/Oct/26 11:23 AM
+Start here: Add your team's work,SCRUM-1,10000,Task,Done,SCRUM,Relief_Management,software,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,,,Done,,,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,25/Jul/26 10:15 AM,24/Oct/26 11:23 AM,24/Oct/26 11:21 AM,24/Oct/26 11:23 AM,30/Jul/26 12:00 AM,0,,,"* Have existing work? [Import|/jira/settings/system/external-import] from a CSV or another tool (like Asana or Notion).
+* Have an idea to plan out? [Use Rovo|/jira?rovoChatTriggerOpen=true&rovoChatPathway=chat&rovoChatPrompt=Hello%20Rovo], your AI assistant, to turn it into structured tasks instantly.
+* Want to accelerate work? [Use AI agents|https://support.atlassian.com/rovo/docs/agents/] to refine tasks and drive projects forward.
+
+[https://www.loom.com/share/8f30334a0dca4ff6861bf7cf324e14ee|https://www.loom.com/share/8f30334a0dca4ff6861bf7cf324e14ee|smart-embed]",,RIYA SHAH,712020:a0b4532a-5c1e-44b8-8625-71beae83f549,,,,,,,,,25/Jul/26 10:15 AM;10513a63-3f22-4601-abef-5b637bd70e15;add-your-teams-work.png;https://riyashah30.atlassian.net/rest/api/3/attachment/content/10000,{},,0|hzzzzz:,SCRUM Sprint 1,SCRUM Sprint 0,,,,,,,,Done,24/Oct/26 11:23 AM

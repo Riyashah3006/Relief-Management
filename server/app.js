@@ -1,9 +1,12 @@
 const express = require('express');
 const cors = require('cors');
 const path = require('node:path');
+const { seedDatabase } = require('./config/seed');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+
+seedDatabase();
 
 app.use(cors());
 app.use(express.json());

@@ -5,7 +5,7 @@ pipeline {
     APP_NAME = 'vanguard-ops'
     IMAGE_NAME = 'riyashah3006/relief-management'
     PORT = '5000'
-    JWT_SECRET = credentials('jwt-secret')
+    
 }
 
     stages {
@@ -64,11 +64,19 @@ pipeline {
 
         
         stage('Deploy Application') {
-            steps {
-        bat 'echo JWT_SECRET=%JWT_SECRET% > .env'
-        bat 'docker compose up -d'
+    steps {
+        withCredentials([string(credentialsId: 'jwt-secret', variable: 'SECRET')]) {
+
+            bat 'echo JWT_SECRET=%SECRET% > .env'
+
+            bat 'type .env'
+
+            bat 'docker compose up -d'
+        }
     }
 }
+    
+
     }
 
     post {

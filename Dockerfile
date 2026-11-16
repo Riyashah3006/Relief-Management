@@ -32,7 +32,10 @@ COPY server/ ./server/
 COPY --from=client-builder /app/client/dist ./client/dist
 
 # Create persistent database directory
-RUN mkdir -p /app/data && chown -R node:node /app
+RUN mkdir -p /app/data \
+  && chown -R node:node /app \
+  && chgrp -R 0 /app/data \
+  && chmod -R g=u /app/data
 
 # Set production environment variables
 ENV NODE_ENV=production

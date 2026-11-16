@@ -1,0 +1,80 @@
+pipeline {
+    agent any
+
+    environment {
+        APP_NAME = 'vanguard-ops'
+        IMAGE_NAME = 'riyashah3006/relief-management'
+        PORT = '5000'
+    }
+
+    stages {
+        stage('Checkout SCM') {
+            steps {
+                echo "Stage 1: Checking out repository from GitHub"
+                checkout scm
+            }
+        }
+
+        stage('Environment Check') {
+            steps {
+                echo "Stage 2: Verifying Tools Environment"
+                bat 'node --version'
+                bat 'npm.cmd --version'
+                bat 'git --version'
+            }
+        }
+
+        stage('Install Dependencies') {
+            steps {
+                echo "Stage 3: Installing Dependencies"
+                dir('server') {
+                    bat 'npm.cmd ci'
+                }
+                dir('client') {
+                    bat 'npm.cmd ci'
+                }
+            }
+        }
+
+        stage('Automated Unit & API Testing') {
+            steps {
+                echo "Stage 4: Executing Automated Tests (Jira Acceptance Criteria)"
+                dir('server') {
+                    bat 'npm.cmd test'
+                }
+            }
+        }
+
+        stage('Build Frontend Assets') {
+            steps {
+                echo "Stage 5: Compiling Production Frontend"
+                dir('client') {
+                    bat 'npm.cmd run build'
+                }
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                echo "Stage 6: Building Docker Container Image"
+                bat "docker build -t %IMAGE_NAME%:%BUILD_NUMBER% -t %IMAGE_NAME%:latest ."
+            }
+        }
+
+        stage('Deploy Application') {
+            steps {
+                echo "Stage 7: Deploying with Docker Compose"
+                bat "docker compose up -d"
+            }
+        }
+    }
+
+    post {
+        success {
+            echo "SUCCESS: Vanguard Ops Build and Deployment Pipeline Completed!"
+        }
+        failure {
+            echo "FAILURE: Build step failed. Inspect console logs."
+        }
+    }
+}

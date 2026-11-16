@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: relief-system
+  labels:
+    name: relief-system
+    app: vanguard-ops

@@ -4,6 +4,7 @@
   "description": "Vanguard Ops Disaster Relief Management Platform (TY SEM 1)",
   "scripts": {
     "start": "node server/index.js",
+    "test": "npm test --prefix server",
     "seed": "node server/config/seed.js",
     "build:client": "cd client && npm run build",
     "server": "cd server && npm run dev",

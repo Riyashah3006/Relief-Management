@@ -8,3 +8,7 @@ client/dist
 .DS_Store
 Thumbs.db
 server/data/*.sqlite
+server/data/*.sqlite-*
+.env
+.env.*
+Jira.csv

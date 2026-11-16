@@ -2,7 +2,7 @@
 
 > **Third Year Semester 1 (TY SEM-1) Capstone Engineering Project**  
 > Complete Full-Stack Working Application mapped 100% to **Jira Scrum Board (SCRUM-1 through SCRUM-42)**.  
-> Fully Containerized for **Docker** deployment with persistent volumes.
+> Containerized for **Docker**, with Kubernetes/OpenShift deployment assets and persistent storage.
 
 ---
 
@@ -24,6 +24,10 @@ npm start
 Ensure Docker Desktop is running on your machine, then run:
 
 ```bash
+# Create a local environment file and replace the JWT_SECRET placeholder
+cp .env.example .env
+# Generate a secret with: node -e "console.log(require('node:crypto').randomBytes(32).toString('hex'))"
+
 # Build and launch the container in the background
 docker compose up --build -d
 
@@ -40,6 +44,73 @@ docker compose down
 - **Application URL**: `http://localhost:5000`
 - **Health Check**: `http://localhost:5000/api/health`
 - **Persistent Volume**: Database is preserved inside Docker named volume `vanguard_relief_data`.
+- **Secret**: Production mode requires `JWT_SECRET`; do not commit `.env` or use the development-only fallback.
+
+### Option C: Deploy to Kubernetes
+
+The manifests in `k8s/app.yaml` create a single-replica Deployment, Service,
+ConfigMap, and persistent claim for SQLite. Create the namespace and secret
+before applying them:
+
+```bash
+kubectl create namespace relief-management
+kubectl create secret generic relief-management --from-literal=jwt-secret="<generated-random-secret>" --namespace relief-management
+kubectl apply --namespace relief-management -f k8s/app.yaml
+kubectl rollout status deployment/relief-management --namespace relief-management
+kubectl get service,pods --namespace relief-management
+```
+
+Port-forward the internal service to test it:
+
+```bash
+kubectl port-forward service/relief-management 5000:80 --namespace relief-management
+```
+
+The SQLite database requires persistent storage; the supplied claim requests
+1 GiB and may need a storage-class adjustment for your cluster. Keep one
+replica because SQLite is not a shared multi-replica database. Update the image
+tag in the Deployment to the commit tag published by Jenkins before rollout.
+
+### Option D: Deploy to OpenShift
+
+`openshift/` provides a patch for the OpenShift-assigned filesystem group and a
+TLS-terminating Route. Log in with `oc`, select the target project, create the
+secret, apply the Kubernetes resources, then apply the OpenShift patch and
+Route:
+
+```bash
+oc project <project-name>
+oc create secret generic relief-management --from-literal=jwt-secret="<generated-random-secret>"
+oc apply -f k8s/app.yaml
+oc patch deployment relief-management --type=json --patch-file=openshift/fs-group-patch.yaml
+oc apply -f openshift/route.yaml
+oc rollout status deployment/relief-management
+oc get route relief-management
+```
+
+The OpenShift cluster must provide a persistent-volume storage class. If the
+image package is private in GHCR, configure an image-pull secret for the project
+and reference it from the Deployment.
+
+### Continuous Integration with Jenkins
+
+The root `Jenkinsfile` installs locked dependencies, runs the API smoke test,
+builds the Vite frontend, and builds the container. On the `main` branch it
+publishes both `latest` and the commit-SHA tag to GHCR. Configure a
+Docker-capable Jenkins agent with Node.js 22, Docker, and Pipeline support; add
+a Jenkins username/password credential named `ghcr-credentials` with permission
+to publish the package. Configure the GitHub repository webhook or poll SCM to
+trigger branch builds. Runtime `JWT_SECRET` is supplied by Compose/Kubernetes,
+not embedded in the image.
+
+### Agile Testing in Jira
+
+Use the existing SCRUM stories and acceptance criteria to create test subtasks,
+record sprint test execution, link defects, and attach CI/evidence. The test
+workflow, coverage matrix, and execution record template are in
+[`docs/AGILE_TESTING.md`](docs/AGILE_TESTING.md). Run the automated checks with
+`npm test` and `npm run build:client`; actual Jira execution results must be
+entered by the project team in Jira.
 
 ---
 
@@ -115,10 +186,16 @@ Relief_Management/
 ├── Dockerfile                      # Multi-stage production container build
 ├── docker-compose.yml              # Single-command Docker orchestration
 ├── .dockerignore
+├── Jenkinsfile                     # CI test, build, and GHCR publish pipeline
+├── k8s/                             # Kubernetes deployment and persistent storage
+├── openshift/                       # OpenShift security patch and secure Route
+├── docs/AGILE_TESTING.md            # Jira sprint testing workflow and coverage
 ├── package.json                    # Root scripts for build & run
 ├── Jira.csv                        # Source Jira Scrum export
 ├── server/                         # Express.js Backend REST API
-│   ├── index.js                    # Server entrypoint & static serving
+│   ├── index.js                    # Database seeding and server entrypoint
+│   ├── app.js                       # Express app, API routes, and static serving
+│   ├── test/                        # Node built-in test runner checks
 │   ├── config/
 │   │   ├── database.js             # SQLite relational schema & tables
 │   │   └── seed.js                 # Realistic disaster & user demo seeder

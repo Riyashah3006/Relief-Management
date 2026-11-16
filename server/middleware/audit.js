@@ -3,7 +3,7 @@ const { db } = require('../config/database');
 function logAudit(req, action, entity, details) {
   try {
     const userId = req.user ? req.user.id : null;
-    const userEmail = req.user ? req.user.email : (req.body ? req.body.email : 'Anonymous');
+    const userEmail = (req.user && req.user.email) ? req.user.email : ((req.body && req.body.email) ? req.body.email : 'Anonymous');
     const ipAddress = req.ip || req.connection.remoteAddress || '127.0.0.1';
 
     const stmt = db.prepare(`

@@ -8,3 +8,4 @@ server/data/*.sqlite-shm
 Thumbs.db
 *.log
 .env
+.ci-data/

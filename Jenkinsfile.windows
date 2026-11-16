@@ -2,10 +2,11 @@ pipeline {
     agent any
 
     environment {
-        APP_NAME = 'vanguard-ops'
-        IMAGE_NAME = 'riyashah3006/relief-management'
-        PORT = '5000'
-    }
+    APP_NAME = 'vanguard-ops'
+    IMAGE_NAME = 'riyashah3006/relief-management'
+    PORT = '5000'
+    JWT_SECRET = credentials('jwt-secret')
+}
 
     stages {
         stage('Checkout SCM') {
@@ -61,12 +62,13 @@ pipeline {
             }
         }
 
+        
         stage('Deploy Application') {
             steps {
-                echo "Stage 7: Deploying with Docker Compose"
-                bat "docker compose up -d"
-            }
-        }
+        bat 'echo JWT_SECRET=%JWT_SECRET% > .env'
+        bat 'docker compose up -d'
+    }
+}
     }
 
     post {

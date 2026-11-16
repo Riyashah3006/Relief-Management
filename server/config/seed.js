@@ -4,9 +4,18 @@ const { db, initSchema } = require('./database');
 function seedDatabase() {
   initSchema();
 
-  // Check if users already exist
-  const existingUsers = db.prepare('SELECT COUNT(*) as count FROM users').get();
-  if (existingUsers && existingUsers.count > 0) {
+  // Only skip when the canonical demo records are present. A partially
+  // populated database must still receive the missing seed data.
+  const seedComplete = db.prepare(`
+    SELECT 1
+    FROM users admin
+    JOIN users coordinator ON coordinator.email = 'coordinator@relief.org'
+    JOIN users citizen ON citizen.email = 'citizen@relief.org'
+    JOIN disasters d ON d.id = 'DIS-001'
+    JOIN resources_inventory ri ON ri.item_name = 'Ready-to-Eat High Protein Meal Packets'
+    WHERE admin.email = 'admin@relief.org'
+  `).get();
+  if (seedComplete) {
     console.log('Database already seeded. Skipping initial seed.');
     return;
   }
@@ -17,7 +26,7 @@ function seedDatabase() {
 
   // 1. Seed Users (all 6 roles)
   const insertUser = db.prepare(`
-    INSERT INTO users (name, email, phone, password_hash, role, location)
+    INSERT OR IGNORE INTO users (name, email, phone, password_hash, role, location)
     VALUES (?, ?, ?, ?, ?, ?)
   `);
 
@@ -28,6 +37,15 @@ function seedDatabase() {
   insertUser.run('Pooja Patel', 'donor@relief.org', '+91 98205 55667', passwordHash, 'Donor', 'Bandra, Mumbai');
   insertUser.run('Amit Kumar', 'citizen@relief.org', '+91 98206 66778', passwordHash, 'Citizen', 'Kurla Lowlands, Mumbai');
   insertUser.run('Sneha Roy', 'sneha.volunteer@relief.org', '+91 98207 77889', passwordHash, 'Volunteer', 'Dadar Sector 2');
+
+  const userId = (email) => db.prepare('SELECT id FROM users WHERE email = ?').get(email).id;
+  const adminId = userId('admin@relief.org');
+  const authorityId = userId('authority@relief.org');
+  const coordinatorId = userId('coordinator@relief.org');
+  const volunteerId = userId('volunteer@relief.org');
+  const donorId = userId('donor@relief.org');
+  const citizenId = userId('citizen@relief.org');
+  const secondVolunteerId = userId('sneha.volunteer@relief.org');
 
   // 2. Seed Disasters (SCRUM-37, SCRUM-38)
   const insertDisaster = db.prepare(`
@@ -99,7 +117,7 @@ function seedDatabase() {
 
   insertRequest.run(
     'REQ-1001',
-    6,
+    citizenId,
     'Amit Kumar',
     '+91 98206 66778',
     'DIS-001',
@@ -118,7 +136,7 @@ function seedDatabase() {
 
   insertRequest.run(
     'REQ-1002',
-    6,
+    citizenId,
     'Amit Kumar',
     '+91 98206 66778',
     'DIS-001',
@@ -137,7 +155,7 @@ function seedDatabase() {
 
   insertRequest.run(
     'REQ-1003',
-    6,
+    citizenId,
     'Amit Kumar',
     '+91 98206 66778',
     'DIS-001',
@@ -156,7 +174,7 @@ function seedDatabase() {
 
   insertRequest.run(
     'REQ-1004',
-    6,
+    citizenId,
     'Amit Kumar',
     '+91 98206 66778',
     'DIS-001',
@@ -188,14 +206,20 @@ function seedDatabase() {
   insertResource.run('Emergency Raincoats & Child Clothing Packs', 'Clothing', 950, 'packs', 'Warehouse B - Dadar Hub', 50);
   insertResource.run('Sanitation & Hygiene Care Kits', 'Sanitation', 1400, 'kits', 'Warehouse A - Kurla Depot', 80);
 
+  const resourceId = (itemName) => db.prepare(
+    'SELECT id FROM resources_inventory WHERE item_name = ? ORDER BY id LIMIT 1'
+  ).get(itemName).id;
+  const blanketsResourceId = resourceId('Emergency Thermal Blankets & Bedding');
+  const tentsResourceId = resourceId('Waterproof All-Weather Family Tents (4-Person)');
+
   // 5. Seed Allocations (SCRUM-26)
   const insertAlloc = db.prepare(`
     INSERT INTO allocations (request_id, resource_id, item_name, quantity_allocated, status, volunteer_id)
     VALUES (?, ?, ?, ?, ?, ?)
   `);
 
-  insertAlloc.run('REQ-1003', 5, 'Emergency Thermal Blankets & Bedding', 10, 'Dispatched', 1);
-  insertAlloc.run('REQ-1003', 6, 'Waterproof All-Weather Family Tents (4-Person)', 2, 'In Transit', 1);
+  insertAlloc.run('REQ-1003', blanketsResourceId, 'Emergency Thermal Blankets & Bedding', 10, 'Dispatched', null);
+  insertAlloc.run('REQ-1003', tentsResourceId, 'Waterproof All-Weather Family Tents (4-Person)', 2, 'In Transit', null);
 
   // 6. Seed Volunteers & Tasks (SCRUM-27)
   const insertVol = db.prepare(`
@@ -203,8 +227,24 @@ function seedDatabase() {
     VALUES (?, ?, ?, ?, ?)
   `);
 
-  insertVol.run(4, 'Search & Rescue, First-Aid CPR, Inflatable Boat Pilot', 'Available', 'Kurla Lowlands', 14);
-  insertVol.run(7, 'Emergency Nursing, Trauma Care, Child Nutrition', 'On Mission', 'Dadar Sector 2', 9);
+  insertVol.run(volunteerId, 'Search & Rescue, First-Aid CPR, Inflatable Boat Pilot', 'Available', 'Kurla Lowlands', 14);
+  insertVol.run(secondVolunteerId, 'Emergency Nursing, Trauma Care, Child Nutrition', 'On Mission', 'Dadar Sector 2', 9);
+
+  const seededVolunteerId = (userId) => db.prepare(
+    'SELECT id FROM volunteers WHERE user_id = ?'
+  ).get(userId).id;
+  const firstVolunteerId = seededVolunteerId(volunteerId);
+  const secondSeededVolunteerId = seededVolunteerId(secondVolunteerId);
+  db.prepare(`
+    UPDATE allocations
+    SET volunteer_id = ?
+    WHERE request_id = 'REQ-1003' AND item_name = 'Emergency Thermal Blankets & Bedding'
+  `).run(firstVolunteerId);
+  db.prepare(`
+    UPDATE allocations
+    SET volunteer_id = ?
+    WHERE request_id = 'REQ-1003' AND item_name = 'Waterproof All-Weather Family Tents (4-Person)'
+  `).run(firstVolunteerId);
 
   const insertTask = db.prepare(`
     INSERT INTO volunteer_tasks (volunteer_id, request_id, title, description, location, status, proof_notes)
@@ -212,7 +252,7 @@ function seedDatabase() {
   `);
 
   insertTask.run(
-    1,
+    firstVolunteerId,
     'REQ-1003',
     'Deliver 10 Blankets and 2 Tents to Municipal School',
     'Transport allocated shelter materials from Dadar Hub to Municipal School Ground Sion East.',
@@ -222,7 +262,7 @@ function seedDatabase() {
   );
 
   insertTask.run(
-    2,
+    secondSeededVolunteerId,
     'REQ-1002',
     'Deliver Emergency Insulin & Wound Dressings',
     'Dispense refrigerated insulin to patient family at Building 7, Kamani Compound.',
@@ -272,7 +312,7 @@ function seedDatabase() {
   insertDonation.run(
     'Pooja Patel',
     'donor@relief.org',
-    5,
+    donorId,
     'Monetary',
     50000,
     null,
@@ -298,7 +338,7 @@ function seedDatabase() {
   insertDonation.run(
     'Pooja Patel',
     'donor@relief.org',
-    5,
+    donorId,
     'Supplies',
     0,
     '500 Bottles of Antiseptic Hand Sanitizer & 100 Baby Food Jars',
@@ -316,7 +356,7 @@ function seedDatabase() {
 
   insertSOS.run(
     'SOS-901',
-    6,
+    citizenId,
     'Amit Kumar',
     '+91 98206 66778',
     19.0657,
@@ -355,7 +395,7 @@ function seedDatabase() {
   );
 
   insertNotification.run(
-    6,
+    citizenId,
     'Citizen',
     'Relief Request Status Update: REQ-1003',
     'Your relief request REQ-1003 has been Approved! Resources are currently being dispatched.',
@@ -368,9 +408,9 @@ function seedDatabase() {
     VALUES (?, ?, ?, ?, ?, ?)
   `);
 
-  insertAudit.run(1, 'admin@relief.org', 'SYSTEM_INITIALIZATION', 'System', 'Vanguard Ops Relief Management System schema and demo data initialized', '127.0.0.1');
-  insertAudit.run(2, 'authority@relief.org', 'CREATE_DISASTER', 'Disaster:DIS-001', 'Created incident Mumbai Coastal Flooding & Tidal Surge', '192.168.1.10');
-  insertAudit.run(3, 'coordinator@relief.org', 'APPROVE_REQUEST', 'Request:REQ-1003', 'Approved request for 10 people shelter assistance', '192.168.1.15');
+  insertAudit.run(adminId, 'admin@relief.org', 'SYSTEM_INITIALIZATION', 'System', 'Vanguard Ops Relief Management System schema and demo data initialized', '127.0.0.1');
+  insertAudit.run(authorityId, 'authority@relief.org', 'CREATE_DISASTER', 'Disaster:DIS-001', 'Created incident Mumbai Coastal Flooding & Tidal Surge', '192.168.1.10');
+  insertAudit.run(coordinatorId, 'coordinator@relief.org', 'APPROVE_REQUEST', 'Request:REQ-1003', 'Approved request for 10 people shelter assistance', '192.168.1.15');
 
   console.log('Seeding completed successfully!');
 }

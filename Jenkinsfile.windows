@@ -63,16 +63,14 @@ pipeline {
         }
 
         
-        stage('Deploy Application') {
+      stage('Deploy Application') {
     steps {
-        withCredentials([string(credentialsId: 'jwt-secret', variable: 'SECRET')]) {
 
-            bat 'echo JWT_SECRET=%SECRET% > .env'
+        bat 'echo JWT_SECRET=mySuperSecretKey123 > .env'
 
-            bat 'type .env'
+        bat 'type .env'
 
-            bat 'docker compose up -d'
-        }
+        bat 'docker compose up -d'
     }
 }
     
